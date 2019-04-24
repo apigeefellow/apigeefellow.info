@@ -1,37 +1,55 @@
-## Welcome to GitHub Pages
+## Apigee Fellow
 
-You can use the [editor on GitHub](https://github.com/apigeefellow/apigeefellow.info/edit/master/README.md) to maintain and preview the content for your website in Markdown files.
+Scripts and links in configuring apigee and istio
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Roadmap
 
-### Markdown
+* Apigee private cloud installation
+* Service mesh integration using istio
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Maintenance
 
-```markdown
-Syntax highlighted code block
+* [https://github.com/pages-themes/cayman/blob/master/_config.yml](https://github.com/pages-themes/cayman/blob/master/_config.yml)
+* [https://github.com/apigeefellow/apigeefellow.github.io](https://github.com/apigeefellow/apigeefellow.github.io)
 
-# Header 1
-## Header 2
-### Header 3
+## Links
 
-- Bulleted
-- List
+### Apigee
 
-1. Numbered
-2. List
+* [Apigee 4MV4D: Apigee Edge 4 Minute Videos for Developers](https://www.youtube.com/playlist?list=PLIXjuPlujxxxe3iTmLtgfIBgpMo7iD7fk)
+* [Install the Edge apigee-setup utility](https://docs.apigee.com/private-cloud/v4.18.05/install-edge-apigee-setup-utility)
+* [Edge GCP](https://github.com/apigee/edge-gcp)
 
-**Bold** and _Italic_ and `Code` text
+### istio
 
-[Link](url) and ![Image](src)
-```
+* [What is a Service Mesh and how Istio fits in](https://developer.ibm.com/code/2017/07/21/service-mesh-architecture-and-istio/)
+* [Manage microservices traffic using Istio](https://developer.ibm.com/patterns/manage-microservices-traffic-using-istio/)
+* [Security of-the-Mesh and In-the-Mesh](https://www.alcide.io/service-mesh-security/)
+* [Container Registry Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US&_ga=2.26431101.-1105478373.1555578505)
+* [istio kubernetes setup](https://cloud.google.com/kubernetes-engine/docs/tutorials/installing-istio)
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+### Linkerd
 
-### Jekyll Themes
+* [Ultralight service mesh for Kubernetes and beyond](https://linkerd.io/)
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/apigeefellow/apigeefellow.info/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+### Kubernetes
 
-### Support or Contact
+* [Minikube](https://kubernetes.io/docs/setup/minikube/)
+* [Kubernetes Engine Tutorials](https://cloud.google.com/kubernetes-engine/docs/tutorials/)
+* [Gcloud](https://cloud.google.com/sdk/docs/)
 
-Having trouble with Pages? Check out our [documentation](https://help.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+### istio and apigee
+
+* [Apigee Adapter for Istio Concepts](https://docs.apigee.com/api-platform/istio-adapter/concepts)
+* [Manage microservices](https://cloud.google.com/apigee/manage-microservices/?utm_referrer=https://cloud.google.com/blog/products/api-management/introducing-apigee-api-management-for-istio)
+
+### Docker
+
+* [Apigee Edge Private Cloud AIO Docker Image](https://community.apigee.com/articles/42562/apigee-edge-private-cloud-aio-docker-image.html)
+* [Apigee Docker](https://docker.apigee.net/apigee-edge-aio)
+
+### ASLR 
+
+* https://www.youtube.com/channel/UCk2sx_3FUkKvDGlIhdUQa8A
+* https://www.youtube.com/watch?v=Pht6y4p63SE
+* https://www.youtube.com/watch?v=GddYLYlaclY
