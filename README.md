@@ -37,6 +37,8 @@ Scripts and links in configuring apigee and istio
 * [Minikube](https://kubernetes.io/docs/setup/minikube/)
 * [Kubernetes Engine Tutorials](https://cloud.google.com/kubernetes-engine/docs/tutorials/)
 * [Gcloud](https://cloud.google.com/sdk/docs/)
+* [Guestbook](https://kubernetes.io/docs/tutorials/stateless-application/guestbook/)
+* [WordpressMySQL](https://kubernetes.io/docs/tutorials/stateful-application/mysql-wordpress-persistent-volume/)
 
 ### istio and apigee
 
