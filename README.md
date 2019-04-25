@@ -27,6 +27,7 @@ Scripts and links in configuring apigee and istio
 * [Security of-the-Mesh and In-the-Mesh](https://www.alcide.io/service-mesh-security/)
 * [Container Registry Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling?hl=en_US&_ga=2.26431101.-1105478373.1555578505)
 * [istio kubernetes setup](https://cloud.google.com/kubernetes-engine/docs/tutorials/installing-istio)
+* [Istio Crash Course](https://medium.com/namely-labs/a-crash-course-for-running-istio-1c6125930715)
 
 ### Linkerd
 
