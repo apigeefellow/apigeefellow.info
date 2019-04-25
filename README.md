@@ -29,6 +29,7 @@ Scripts and links in configuring apigee and istio
 * [istio kubernetes setup](https://cloud.google.com/kubernetes-engine/docs/tutorials/installing-istio)
 * [Istio Crash Course](https://medium.com/namely-labs/a-crash-course-for-running-istio-1c6125930715)
 * [RBAC](https://cloud.google.com/kubernetes-engine/docs/how-to/role-based-access-control)
+* [Sample Install v1 in GCP](https://github.com/apigeefellow/apigeefellow.info/raw/master/docs/istio-manual-install-note-v1.pdf)
 
 ### Linkerd
 
