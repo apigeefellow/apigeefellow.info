@@ -32,6 +32,7 @@ Scripts and links in configuring apigee and istio
 * [Sample Install v1 in GCP](https://github.com/apigeefellow/apigeefellow.info/raw/master/docs/istio-manual-install-note-v1.pdf)
 * [Istio Tasks](https://istio.io/docs/tasks/)
 * [Istio Docs](https://istio.io/docs/)
+* [istio autoscaling](https://medium.com/google-cloud/kubernetes-autoscaling-with-istio-metrics-76442253a45a)
 
 ### Linkerd
 
