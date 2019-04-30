@@ -61,3 +61,8 @@ Scripts and links in configuring apigee and istio
 * https://www.youtube.com/channel/UCk2sx_3FUkKvDGlIhdUQa8A
 * https://www.youtube.com/watch?v=Pht6y4p63SE
 * https://www.youtube.com/watch?v=GddYLYlaclY
+
+### Maintenance
+
+* sudo /Applications/System\ Preferences.app/Contents/MacOS/System\ Preferences
+
