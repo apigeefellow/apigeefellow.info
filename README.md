@@ -57,12 +57,6 @@ Scripts and links in configuring apigee and istio
 * [Apigee Edge Private Cloud AIO Docker Image](https://community.apigee.com/articles/42562/apigee-edge-private-cloud-aio-docker-image.html)
 * [Apigee Docker](https://docker.apigee.net/apigee-edge-aio)
 
-### ASLR 
-
-* https://www.youtube.com/channel/UCk2sx_3FUkKvDGlIhdUQa8A
-* https://www.youtube.com/watch?v=Pht6y4p63SE
-* https://www.youtube.com/watch?v=GddYLYlaclY
-
 ### Maintenance
 
 * sudo /Applications/System\ Preferences.app/Contents/MacOS/System\ Preferences
