@@ -5,7 +5,7 @@
 
 # gcloud container clusters get-credentials istio-tutorial --zone us-central1-f --project avian-compiler-238122
 
-gcloud container clusters create istio-tutorial  --machine-type=n1-standard-2  --num-nodes=4 
+gcloud container clusters create istio-tutorial  --machine-type=n1-standard-2  --num-nodes=4  --zone us-central1-f 
 
 sleep 60
 
