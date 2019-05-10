@@ -41,8 +41,6 @@ kubectl --insecure-skip-tls-verify=true get namespace -L istio-injection
 
 kubectl --insecure-skip-tls-verify=true get configmap istio -n istio-system -o yaml
 
-kubectl config set-cluster ${KUBE_CONTEXT} --insecure-skip-tls-verify=true
-
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml --insecure-skip-tls-verify=true
 
 # validate
