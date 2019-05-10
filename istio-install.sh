@@ -59,7 +59,9 @@ kubectl --insecure-skip-tls-verify=true get gateway -o yaml
 
 kubectl --insecure-skip-tls-verify=true get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}'
 
-kubectl --insecure-skip-tls-verify=true replace -f samples/bookinfo/networking/destination-rule-all.yaml
+kubectl --insecure-skip-tls-verify=true apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+
+kubectl --insecure-skip-tls-verify=true apply -f samples/bookinfo/networking/destination-rule-all.yaml
 
 kubectl --insecure-skip-tls-verify=true apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 
