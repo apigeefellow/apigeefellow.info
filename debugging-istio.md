@@ -3,6 +3,7 @@
 kubectl apply -f samples/bookinfo/networking/destination-rule-all-mtls.yaml
 
 * [Debugging Istio: How to Fix a Broken Service Mesh (Cloud Next '19)](https://www.youtube.com/watch?v=FbYBO7Pi2d8)
+* [Istio in Production: Day 2 Traffic Routing (Cloud Next '19)](https://www.youtube.com/watch?v=7cINRP0BFY8&t=227s)
 
 ```
   506  wget https://github.com/wercker/stern/releases/download/1.10.0/stern_linux_amd64
