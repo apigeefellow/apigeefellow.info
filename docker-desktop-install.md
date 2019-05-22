@@ -174,3 +174,46 @@ ratings       ClusterIP   10.105.162.209   <none>        9080/TCP   33s
 reviews       ClusterIP   10.109.66.255    <none>        9080/TCP   32s
 
 ```
+### Bookinfo install
+
+```
+
+$ kubectl get pods
+NAME                              READY   STATUS    RESTARTS   AGE
+details-v1-757ddf9f94-zzprq       2/2     Running   0          6m
+example-pod                       1/1     Running   1          1h
+productpage-v1-54bc69c656-5hphf   2/2     Running   0          6m
+ratings-v1-5697db448b-hggxg       2/2     Running   0          6m
+reviews-v1-5dffc9bfdf-n9pnq       2/2     Running   0          6m
+reviews-v2-74687c6dc7-wwscw       2/2     Running   0          6m
+reviews-v3-5dbcf4b9bf-qhrqk       2/2     Running   0          6m
+
+$ kubectl exec -it $(kubectl get pod -l app=ratings -o jsonpath='{.items[0].metadata.name}') -c ratings -- curl productpage:9080/productpage | grep -o "<title>.*</title>"
+<title>Simple Bookstore App</title>
+
+
+$ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+gateway.networking.istio.io/bookinfo-gateway created
+virtualservice.networking.istio.io/bookinfo created
+
+
+$ kubectl get svc istio-ingressgateway -n istio-system
+NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP   PORT(S)                                                                                                                                      AGE
+istio-ingressgateway   LoadBalancer   10.100.253.119   localhost     15020:30190/TCP,80:31380/TCP,443:31390/TCP,31400:31400/TCP,15029:31924/TCP,15030:31316/TCP,15031:30533/TCP,15032:31618/TCP,15443:30147/TCP   12m
+
+
+http://localhost/productpage
+
+$ kubectl apply -f samples/bookinfo/networking/destination-rule-all-mtls.yaml
+destinationrule.networking.istio.io/productpage created
+destinationrule.networking.istio.io/reviews created
+destinationrule.networking.istio.io/ratings created
+destinationrule.networking.istio.io/details created
+
+$ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+virtualservice.networking.istio.io/productpage created
+virtualservice.networking.istio.io/reviews created
+virtualservice.networking.istio.io/ratings created
+virtualservice.networking.istio.io/details created
+
+```
