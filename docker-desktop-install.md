@@ -1,3 +1,14 @@
+### Links
+
+* https://rominirani.com/tutorial-getting-started-with-kubernetes-with-docker-on-mac-7f58467203fd
+* https://github.com/kubernetes/dashboard/wiki/Creating-sample-user
+* https://github.com/kubernetes/dashboard/wiki/Access-control
+* https://matthewpalmer.net/kubernetes-app-developer/articles/how-to-run-local-kubernetes-docker-for-mac.html
+* https://iamchuka.com/install-kubernetes-dashboard-part-iii/
+* https://iamchuka.com/kubernetes-on-digitalocean-coreos-for-65-part-i/
+
+### Docker desktop install
+
 ```
 
 https://matthewpalmer.net/kubernetes-app-developer/articles/how-to-run-local-kubernetes-docker-for-mac.html
