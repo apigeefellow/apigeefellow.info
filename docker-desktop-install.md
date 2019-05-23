@@ -228,3 +228,16 @@ virtualservice.networking.istio.io/ratings created
 virtualservice.networking.istio.io/details created
 
 ```
+
+### Debugging
+
+#### kubernetes-dashboard CrashLoopBackOff
+```
+$ kubectl --namespace=kube-system logs kubernetes-dashboard-669f9bbd46-vnbnr
+2019/05/23 13:48:47 Starting overwatch
+2019/05/23 13:48:47 Using in-cluster config to connect to apiserver
+2019/05/23 13:48:47 Using service account token for csrf signing
+2019/05/23 13:49:17 Error while initializing connection to Kubernetes apiserver. This most likely means that the cluster is misconfigured (e.g., it has invalid apiserver certificates or service account's configuration) or the --apiserver-host param points to a server that does not exist. Reason: Get https://10.96.0.1:443/version: dial tcp 10.96.0.1:443: i/o timeout
+Refer to our FAQ and wiki pages for more information: https://github.com/kubernetes/dashboard/wiki/FAQ
+
+```
