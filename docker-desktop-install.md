@@ -455,3 +455,112 @@ $ kubectl --namespace=kube-system logs kubernetes-dashboard-669f9bbd46-vnbnr
 Refer to our FAQ and wiki pages for more information: https://github.com/kubernetes/dashboard/wiki/FAQ
 
 ```
+### Kiali installation on istio 1.2.2
+
+```
+dashboard token - kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+
+Telemetry - Visualization
+
+https://istio.io/docs/tasks/telemetry/kiali/
+
+Kiali
+
+KIALI_USERNAME=$(read -p 'Kiali Username: ' uval && echo -n $uval | base64)
+KIALI_PASSPHRASE=$(read -sp 'Kiali Passphrase: ' pval && echo -n $pval | base64)
+
+$ KIALI_USERNAME=$(read -p 'Kiali Username: ' uval && echo -n $uval | base64)
+Kiali Username: admin
+
+$ KIALI_PASSPHRASE=$(read -sp 'Kiali Passphrase: ' pval && echo -n $pval | base64)
+Kiali Passphrase: password1234
+
+
+NAMESPACE=istio-system
+kubectl create namespace $NAMESPACE
+
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: Secret
+metadata:
+  name: kiali
+  namespace: $NAMESPACE
+  labels:
+    app: kiali
+type: Opaque
+data:
+  username: $KIALI_USERNAME
+  passphrase: $KIALI_PASSPHRASE
+EOF
+
+
+kubectl -n istio-system get svc kiali
+
+kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
+
+kubectl get pods -n istio-system
+
+Delete kiali pod to refresh password
+
+kubectl delete pod kiali-678b47867b-gx4jj -n istio-system
+
+kiali-678b47867b-bgdtq                    1/1       Running     0          10
+
+http://localhost:20001/kiali/console/overview?duration=60&pi=15000
+
+source ~/.bash_rc
+
+brew install watch
+
+export NO_PROXY=localhost
+export no_proxy=localhost
+
+export GATEWAY_URL=localhost
+
+$ curl http://$GATEWAY_URL/productpage
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Bookstore App</title>
+<meta charset="utf-8">
+
+
+kubectl get pod -n istio-system
+kubectl -n istio-system delete pod kiali-678b47867b-bgdtq 
+
+kubectl delete -f samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl label namespace default istio-injection=enabled
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+
+kubectl get namespace
+NAME           STATUS    AGE
+default        Active    7h
+docker         Active    7h
+istio-system   Active    7h
+kube-public    Active    7h
+kube-system    Active    7h
+
+unset HTTP_PROXY
+unset HTTPS_PROXY
+unset http_proxy
+unset https_proxy
+
+re-install istio and bookinfo using istio-1.2.2
+
+curl -L https://git.io/getLatestIstio | ISTIO_VERSION=1.2.2 sh -
+./istioctl verify-install
+kubectl apply -f install/kubernetes/istio-demo-auth.yaml
+
+kubectl label namespace default istio-injection=enabled
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+
+kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+kubectl get svc istio-ingressgateway -n istio-system
+kubectl apply -f samples/bookinfo/networking/destination-rule-all-mtls.yaml
+
+kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=kiali -o jsonpath='{.items[0].metadata.name}') 20001:20001
+
+NOTE: restarting docker-desktop could impact running istio-system thereby affecting kiali. It could also be that istio-1.2.2 works correctly that istio.1.1.8
+
+
+```
