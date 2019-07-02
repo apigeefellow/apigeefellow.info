@@ -50,11 +50,11 @@ Starting to serve on 127.0.0.1:8001
 
 # https://rominirani.com/tutorial-getting-started-with-kubernetes-with-docker-on-mac-7f58467203fd
 
-http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login
+http://localhost:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/#!/login (this will not work by default. Generate the token properly by creating the file k8s-dashboard-admin-user.yaml as instructed below)
 
 OR 
 
-kubectl port-forward kubernetes-dashboard-7798c48646-ctrtl 8443:8443 — namespace=kube-system
+kubectl port-forward kubernetes-dashboard-7798c48646-ctrtl 8443:8443 — namespace=kube-system 
 
 # enable skip login
 
@@ -342,6 +342,25 @@ unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for ki
 ### Validation
 
 ```
+Wait until everything is in running state
+
+$ kubectl get pods -n istio-system
+NAME                                      READY     STATUS              RESTARTS   AGE
+grafana-68d7777d7d-vjmm6                  1/1       Running             0          3m
+istio-citadel-65994b5db-bfsfk             1/1       Running             0          3m
+istio-cleanup-secrets-1.1.8-n6qrm         0/1       Completed           0          3m
+istio-egressgateway-79c5945578-c6xqm      0/1       Running             0          3m
+istio-galley-758865b64-hh8jw              0/1       ContainerCreating   0          3m
+istio-grafana-post-install-1.1.8-m79nb    0/1       Completed           0          3m
+istio-ingressgateway-84b4c7c95-bm8xw      0/1       Running             0          3m
+istio-pilot-766856dfff-r6g2k              1/2       Running             0          3m
+istio-policy-7d5b8f6644-bcz8r             2/2       Running             1          3m
+istio-security-post-install-1.1.8-gsnh7   0/1       Completed           0          3m
+istio-sidecar-injector-7b585cbb89-zxrfg   0/1       ContainerCreating   0          3m
+istio-telemetry-64f9c9d87b-s6p5t          2/2       Running             1          3m
+istio-tracing-79c7955c98-2j7xb            0/1       ContainerCreating   0          3m
+kiali-678b47867b-gx4jj                    1/1       Running             0          3m
+prometheus-7484dc55b4-4mnjz               0/1       ContainerCreating   0          3m
 
 
 $ kubectl get pods -n istio-system
