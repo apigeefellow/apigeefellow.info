@@ -149,6 +149,201 @@ Istio installation
 
 kubectl apply -f install/kubernetes/istio-demo-auth.yaml
 
+```
+### Isito installation output
+```
+namespace "istio-system" created
+customresourcedefinition.apiextensions.k8s.io "virtualservices.networking.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "destinationrules.networking.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "serviceentries.networking.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "gateways.networking.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "envoyfilters.networking.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "clusterrbacconfigs.rbac.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "policies.authentication.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "meshpolicies.authentication.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "httpapispecbindings.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "httpapispecs.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "quotaspecbindings.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "quotaspecs.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "rules.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "attributemanifests.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "bypasses.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "circonuses.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "deniers.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "fluentds.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "kubernetesenvs.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "listcheckers.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "memquotas.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "noops.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "opas.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "prometheuses.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "rbacs.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "redisquotas.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "signalfxs.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "solarwindses.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "stackdrivers.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "statsds.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "stdios.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "apikeys.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "authorizations.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "checknothings.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "kuberneteses.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "listentries.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "logentries.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "edges.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "metrics.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "quotas.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "reportnothings.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "tracespans.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "rbacconfigs.rbac.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "serviceroles.rbac.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "servicerolebindings.rbac.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "adapters.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "instances.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "templates.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "handlers.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "cloudwatches.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "dogstatsds.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "sidecars.networking.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "zipkins.config.istio.io" created
+customresourcedefinition.apiextensions.k8s.io "clusterissuers.certmanager.k8s.io" created
+customresourcedefinition.apiextensions.k8s.io "issuers.certmanager.k8s.io" created
+customresourcedefinition.apiextensions.k8s.io "orders.certmanager.k8s.io" created
+customresourcedefinition.apiextensions.k8s.io "challenges.certmanager.k8s.io" created
+secret "kiali" created
+configmap "istio-galley-configuration" created
+configmap "istio-grafana-custom-resources" created
+configmap "istio-grafana-configuration-dashboards-galley-dashboard" created
+configmap "istio-grafana-configuration-dashboards-istio-mesh-dashboard" created
+configmap "istio-grafana-configuration-dashboards-istio-performance-dashboard" created
+configmap "istio-grafana-configuration-dashboards-istio-service-dashboard" created
+configmap "istio-grafana-configuration-dashboards-istio-workload-dashboard" created
+configmap "istio-grafana-configuration-dashboards-mixer-dashboard" created
+configmap "istio-grafana-configuration-dashboards-pilot-dashboard" created
+configmap "istio-grafana" created
+configmap "kiali" created
+configmap "prometheus" created
+configmap "istio-security-custom-resources" created
+configmap "istio" created
+configmap "istio-sidecar-injector" created
+serviceaccount "istio-galley-service-account" created
+serviceaccount "istio-egressgateway-service-account" created
+serviceaccount "istio-ingressgateway-service-account" created
+serviceaccount "istio-grafana-post-install-account" created
+clusterrole.rbac.authorization.k8s.io "istio-grafana-post-install-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-grafana-post-install-role-binding-istio-system" created
+job.batch "istio-grafana-post-install-1.1.8" created
+serviceaccount "kiali-service-account" created
+serviceaccount "istio-mixer-service-account" created
+serviceaccount "istio-pilot-service-account" created
+serviceaccount "prometheus" created
+serviceaccount "istio-cleanup-secrets-service-account" created
+clusterrole.rbac.authorization.k8s.io "istio-cleanup-secrets-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-cleanup-secrets-istio-system" created
+job.batch "istio-cleanup-secrets-1.1.8" created
+serviceaccount "istio-security-post-install-account" created
+clusterrole.rbac.authorization.k8s.io "istio-security-post-install-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-security-post-install-role-binding-istio-system" created
+job.batch "istio-security-post-install-1.1.8" created
+serviceaccount "istio-citadel-service-account" created
+serviceaccount "istio-sidecar-injector-service-account" created
+serviceaccount "istio-multi" created
+clusterrole.rbac.authorization.k8s.io "istio-galley-istio-system" created
+clusterrole.rbac.authorization.k8s.io "istio-egressgateway-istio-system" created
+clusterrole.rbac.authorization.k8s.io "istio-ingressgateway-istio-system" created
+clusterrole.rbac.authorization.k8s.io "kiali" created
+clusterrole.rbac.authorization.k8s.io "kiali-viewer" created
+clusterrole.rbac.authorization.k8s.io "istio-mixer-istio-system" created
+clusterrole.rbac.authorization.k8s.io "istio-pilot-istio-system" created
+clusterrole.rbac.authorization.k8s.io "prometheus-istio-system" created
+clusterrole.rbac.authorization.k8s.io "istio-citadel-istio-system" created
+clusterrole.rbac.authorization.k8s.io "istio-sidecar-injector-istio-system" created
+clusterrole.rbac.authorization.k8s.io "istio-reader" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-galley-admin-role-binding-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-egressgateway-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-ingressgateway-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-kiali-admin-role-binding-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-mixer-admin-role-binding-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-pilot-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "prometheus-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-citadel-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-sidecar-injector-admin-role-binding-istio-system" created
+clusterrolebinding.rbac.authorization.k8s.io "istio-multi" created
+role.rbac.authorization.k8s.io "istio-ingressgateway-sds" created
+rolebinding.rbac.authorization.k8s.io "istio-ingressgateway-sds" created
+service "istio-galley" created
+service "istio-egressgateway" created
+service "istio-ingressgateway" created
+service "grafana" created
+service "kiali" created
+service "istio-policy" created
+service "istio-telemetry" created
+service "istio-pilot" created
+service "prometheus" created
+service "istio-citadel" created
+service "istio-sidecar-injector" created
+deployment.extensions "istio-galley" created
+deployment.extensions "istio-egressgateway" created
+deployment.extensions "istio-ingressgateway" created
+deployment.extensions "grafana" created
+deployment.extensions "kiali" created
+deployment.extensions "istio-policy" created
+deployment.extensions "istio-telemetry" created
+deployment.extensions "istio-pilot" created
+deployment.extensions "prometheus" created
+deployment.extensions "istio-citadel" created
+deployment.extensions "istio-sidecar-injector" created
+deployment.extensions "istio-tracing" created
+horizontalpodautoscaler.autoscaling "istio-egressgateway" created
+horizontalpodautoscaler.autoscaling "istio-ingressgateway" created
+horizontalpodautoscaler.autoscaling "istio-policy" created
+horizontalpodautoscaler.autoscaling "istio-telemetry" created
+horizontalpodautoscaler.autoscaling "istio-pilot" created
+service "jaeger-query" created
+service "jaeger-collector" created
+service "jaeger-agent" created
+service "zipkin" created
+service "tracing" created
+mutatingwebhookconfiguration.admissionregistration.k8s.io "istio-sidecar-injector" created
+poddisruptionbudget.policy "istio-galley" created
+poddisruptionbudget.policy "istio-egressgateway" created
+poddisruptionbudget.policy "istio-ingressgateway" created
+poddisruptionbudget.policy "istio-policy" created
+poddisruptionbudget.policy "istio-telemetry" created
+poddisruptionbudget.policy "istio-pilot" created
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "attributemanifest" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "attributemanifest" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "handler" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "logentry" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "logentry" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "metric" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "handler" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "handler" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "rule" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "kubernetes" in version "config.istio.io/v1alpha2"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "DestinationRule" in version "networking.istio.io/v1alpha3"
+unable to recognize "install/kubernetes/istio-demo-auth.yaml": no matches for kind "DestinationRule" in version "networking.istio.io/v1alpha3"
+```
+
+### Validation
+
+```
+
+
 $ kubectl get pods -n istio-system
 NAME                                      READY   STATUS      RESTARTS   AGE
 grafana-68d7777d7d-gx8j9                  1/1     Running     0          3m
