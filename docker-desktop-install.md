@@ -562,5 +562,322 @@ kubectl -n istio-system port-forward $(kubectl -n istio-system get pod -l app=ki
 
 NOTE: restarting docker-desktop could impact running istio-system thereby affecting kiali. It could also be that istio-1.2.2 works correctly that istio.1.1.8
 
+```
+
+### Jaeger
 
 ```
+Use recognize port
+
+kubectl -n istio-systeport-forward $(kubectl -n istio-system get pod -l app=jaeger -o jsonpath='{.items[0].metadata.name}') 20002:16686
+
+watch -n 1 curl -o /dev/null -s -w %{http_code} $GATEWAY_URL/productpage
+
+prometheus
+http://localhost:9090/targets
+
+https://istio.io/docs/ops/misc/#no-traces-appearing-in-zipkin-when-running-istio-locally-on-mac
+
+
+https://github.com/IBM/opentracing-istio-troubleshooting/blob/master/README.md
+
+https://istio.io/blog/2017/mixer-spof-myth/
+
+kubectl -n kube-system describe secret $(kubectl -n kube-system get secret | grep admin-user | awk '{print $1}')
+
+https://github.com/IBM/opentracing-istio-troubleshooting/blob/master/README.md - Use MicroProfile OpenTracing and distributed tracing with Istio to enhance system observability.
+
+```
+
+### Demo
+
+
+#### Request routing
+
+```
+1. Destination rules - to define all versions
+https://istio.io/docs/examples/bookinfo/#apply-default-destination-rules
+kubectl apply -f samples/bookinfo/networking/destination-rule-all-mtls.yaml
+kubectl get destinationrules -o yaml
+Currently shows all the version
+
+2. Specify the routing rules
+https://raw.githubusercontent.com/istio/istio/release-1.2/samples/bookinfo/networking/virtual-service-all-v1.yaml
+
+Get bookinfo defaul virtualservice entry to verify routing rules.
+kubectl get virtualservices -o yaml
+
+kubectl get virtualservices -o yaml
+apiVersion: v1
+items:
+- apiVersion: networking.istio.io/v1alpha3
+  kind: VirtualService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"bookinfo","namespace":"default"},"spec":{"gateways":["bookinfo-gateway"],"hosts":["*"],"http":[{"match":[{"uri":{"exact":"/productpage"}},{"uri":{"prefix":"/static"}},{"uri":{"exact":"/login"}},{"uri":{"exact":"/logout"}},{"uri":{"prefix":"/api/v1/products"}}],"route":[{"destination":{"host":"productpage","port":{"number":9080}}}]}]}}
+    clusterName: ""
+    creationTimestamp: 2019-07-02T22:41:44Z
+    generation: 1
+    name: bookinfo
+    namespace: default
+    resourceVersion: "36691"
+    selfLink: /apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/bookinfo
+    uid: 9119593f-9d1a-11e9-8e13-025000000001
+  spec:
+    gateways:
+    - bookinfo-gateway
+    hosts:
+    - '*'
+    http:
+    - match:
+      - uri:
+          exact: /productpage
+      - uri:
+          prefix: /static
+      - uri:
+          exact: /login
+      - uri:
+          exact: /logout
+      - uri:
+          prefix: /api/v1/products
+      route:
+      - destination:
+          host: productpage
+          port:
+            number: 9080
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+
+
+kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+
+kubectl get virtualservices -o yaml
+apiVersion: v1
+items:
+- apiVersion: networking.istio.io/v1alpha3
+  kind: VirtualService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"bookinfo","namespace":"default"},"spec":{"gateways":["bookinfo-gateway"],"hosts":["*"],"http":[{"match":[{"uri":{"exact":"/productpage"}},{"uri":{"prefix":"/static"}},{"uri":{"exact":"/login"}},{"uri":{"exact":"/logout"}},{"uri":{"prefix":"/api/v1/products"}}],"route":[{"destination":{"host":"productpage","port":{"number":9080}}}]}]}}
+    clusterName: ""
+    creationTimestamp: 2019-07-02T22:41:44Z
+    generation: 1
+    name: bookinfo
+    namespace: default
+    resourceVersion: "36691"
+    selfLink: /apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/bookinfo
+    uid: 9119593f-9d1a-11e9-8e13-025000000001
+  spec:
+    gateways:
+    - bookinfo-gateway
+    hosts:
+    - '*'
+    http:
+    - match:
+      - uri:
+          exact: /productpage
+      - uri:
+          prefix: /static
+      - uri:
+          exact: /login
+      - uri:
+          exact: /logout
+      - uri:
+          prefix: /api/v1/products
+      route:
+      - destination:
+          host: productpage
+          port:
+            number: 9080
+- apiVersion: networking.istio.io/v1alpha3
+  kind: VirtualService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"details","namespace":"default"},"spec":{"hosts":["details"],"http":[{"route":[{"destination":{"host":"details","subset":"v1"}}]}]}}
+    clusterName: ""
+    creationTimestamp: 2019-07-03T12:48:49Z
+    generation: 1
+    name: details
+    namespace: default
+    resourceVersion: "47107"
+    selfLink: /apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/details
+    uid: e7ae993c-9d90-11e9-8e14-025000000001
+  spec:
+    hosts:
+    - details
+    http:
+    - route:
+      - destination:
+          host: details
+          subset: v1
+- apiVersion: networking.istio.io/v1alpha3
+  kind: VirtualService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"productpage","namespace":"default"},"spec":{"hosts":["productpage"],"http":[{"route":[{"destination":{"host":"productpage","subset":"v1"}}]}]}}
+    clusterName: ""
+    creationTimestamp: 2019-07-03T12:48:49Z
+    generation: 1
+    name: productpage
+    namespace: default
+    resourceVersion: "47104"
+    selfLink: /apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/productpage
+    uid: e7a78bc4-9d90-11e9-8e14-025000000001
+  spec:
+    hosts:
+    - productpage
+    http:
+    - route:
+      - destination:
+          host: productpage
+          subset: v1
+- apiVersion: networking.istio.io/v1alpha3
+  kind: VirtualService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"ratings","namespace":"default"},"spec":{"hosts":["ratings"],"http":[{"route":[{"destination":{"host":"ratings","subset":"v1"}}]}]}}
+    clusterName: ""
+    creationTimestamp: 2019-07-03T12:48:49Z
+    generation: 1
+    name: ratings
+    namespace: default
+    resourceVersion: "47106"
+    selfLink: /apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/ratings
+    uid: e7acd159-9d90-11e9-8e14-025000000001
+  spec:
+    hosts:
+    - ratings
+    http:
+    - route:
+      - destination:
+          host: ratings
+          subset: v1
+- apiVersion: networking.istio.io/v1alpha3
+  kind: VirtualService
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.istio.io/v1alpha3","kind":"VirtualService","metadata":{"annotations":{},"name":"reviews","namespace":"default"},"spec":{"hosts":["reviews"],"http":[{"route":[{"destination":{"host":"reviews","subset":"v1"}}]}]}}
+    clusterName: ""
+    creationTimestamp: 2019-07-03T12:48:49Z
+    generation: 1
+    name: reviews
+    namespace: default
+    resourceVersion: "47105"
+    selfLink: /apis/networking.istio.io/v1alpha3/namespaces/default/virtualservices/reviews
+    uid: e7ab030c-9d90-11e9-8e14-025000000001
+  spec:
+    hosts:
+    - reviews
+    http:
+    - route:
+      - destination:
+          host: reviews
+          subset: v1
+kind: List
+metadata:
+  resourceVersion: ""
+  selfLink: ""
+
+View the page UI and v1 only shows it
+http://localhost/productpage
+
+Or run watch
+watch -n 1 curl -o /dev/null -s -w %{http_code} $GATEWAY_URL/productpage
+
+Look at Prometheus targets - http://localhost:9090/targets - to verify if metrics endpoints are up. Look at the tags on prometheus.
+Search for istio_requests_total - then Console - then Graph
+Look at Kiali - only shows V1  - Look at Last 30 minutes and Last 1 minute
+Look at Grafana - v1 has values. Rating v2 and V3 do not. It does not call ratingsv1 also. Kiali shows it. The UI shows no ratings also - http://localhost/productpage
+
+3. Route based on user identity - all traffic from a user named Jason will be routed to the service reviews:v2
+
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: reviews
+spec:
+  hosts:
+    - reviews
+  http:
+  - match:
+    - headers:
+        end-user:
+          exact: jason
+    route:
+    - destination:
+        host: reviews
+        subset: v2
+  - route:
+    - destination:
+        host: reviews
+        subset: v1
+
+In UI - see that there is no reviews.
+Login with jason/jason - reviews goes to v2. others is v1
+
+4. Cleanup - remove hardcoded routing rules to v1. If there is no routing rules, it goes to all versions. By default, bookinfo has its default routing rule.
+
+kubectl delete -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+virtualservice.networking.istio.io "productpage" deleted
+virtualservice.networking.istio.io "reviews" deleted
+virtualservice.networking.istio.io "ratings" deleted
+virtualservice.networking.istio.io "details" deleted
+
+```
+
+#### Traffic Shifting
+
+migrate traffic from an older version to a new version
+https://istio.io/docs/tasks/traffic-management/traffic-shifting/
+
+```
+kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+
+Transfer 50% of the traffic from reviews:v1 to reviews:v3 
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
+
+
+kubectl get virtualservice reviews -o yaml
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: reviews
+  ...
+spec:
+  hosts:
+  - reviews
+  http:
+  - route:
+    - destination:
+        host: reviews
+        subset: v1
+      weight: 50
+    - destination:
+        host: reviews
+        subset: v3
+      weight: 50
+
+Look at UI to see red color star  and no star at all.
+The kiali does not show v2 - grayed line
+
+Assuming you decide that the reviews:v3 microservice is stable, you can route 100% of the traffic to reviews:v3 
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-v3.yaml
+
+Look at the UI - it is all v3
+
+Cleanup
+
+kubectl delete -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+
+```
+
